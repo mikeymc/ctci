@@ -1,7 +1,7 @@
 package com.ctci.stacks;
 
 public class Stack {
-    private static int STACK_SIZE = 10;
+    public static int STACK_SIZE = 10;
 
     private int[] stack;
     private int pointer;
