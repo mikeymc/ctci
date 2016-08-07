@@ -3,6 +3,8 @@ package com.ctci.stacks;
 import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -32,7 +34,7 @@ public class StackTest {
         assertEquals(-1, subject.pop());
     }
 
-    @Test(expected = Exception.class)
+    @Test
     public void handlesTenItems() {
         subject.push(1);
         subject.push(2);
@@ -44,7 +46,6 @@ public class StackTest {
         subject.push(8);
         subject.push(9);
         subject.push(10);
-        subject.push(11);
 
         assertEquals(10, subject.pop());
         assertEquals(9, subject.pop());
@@ -56,6 +57,35 @@ public class StackTest {
         assertEquals(3, subject.pop());
         assertEquals(2, subject.pop());
         assertEquals(1, subject.pop());
-        assertNull(subject.pop());
+        assertEquals(-1, subject.pop());
+    }
+
+    @Test
+    public void isEmpty() {
+        assertTrue(subject.isEmpty());
+
+        subject.push(1);
+        assertFalse(subject.isEmpty());
+
+        subject.pop();
+        assertTrue(subject.isEmpty());
+    }
+
+    @Test
+    public void isFull() {
+        assertFalse(subject.isFull());
+
+        for (int i = 1; i < 11; i++) {
+            assertFalse(subject.isFull());
+            subject.push(i);
+        }
+
+        assertTrue(subject.isFull());
+
+        subject.pop();
+        assertFalse(subject.isFull());
+
+        subject.push(1);
+        assertTrue(subject.isFull());
     }
 }
