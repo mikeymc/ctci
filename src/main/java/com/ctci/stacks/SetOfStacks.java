@@ -1,5 +1,6 @@
 package com.ctci.stacks;
 
+// Todo: perform pop on specific stack number
 public class SetOfStacks {
     private static int NUMBER_OF_STACKS = 10;
 
